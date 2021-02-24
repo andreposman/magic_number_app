@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:magic_number_app/asset_form_page.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -10,10 +11,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
-        child: Text('Magic Number',
-            style: TextStyle(fontSize: 22.0, color: Colors.black)),
-      ),
+      body: AssetFormPage(),
     );
   }
 }

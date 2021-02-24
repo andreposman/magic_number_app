@@ -46,11 +46,13 @@ Widget _introScreen() {
         navigateAfterSeconds: HomeScreen(),
         loaderColor: Colors.blue,
       ),
-      Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/logo_transparent.png"),
-            fit: BoxFit.scaleDown,
+      Center(
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/logo_transparent.png"),
+              fit: BoxFit.scaleDown,
+            ),
           ),
         ),
       ),
