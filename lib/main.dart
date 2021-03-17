@@ -1,61 +1,41 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:splashscreen/splashscreen.dart';
-import 'home_screen.dart';
+
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+
+import 'package:magic_number_app/pages/asset_form_page.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Splash Screen',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return NeumorphicApp(
+      title: 'Magic Number - Calcule sua renda Passiva',
+      debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.light,
+      darkTheme: NeumorphicThemeData(
+        boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
+        baseColor: Color(0x1C1C1C1C),
+        accentColor: Colors.green,
+        lightSource: LightSource.topLeft,
+        depth: 2,
+        intensity: 0.8,
+        defaultTextColor: Color(0xF1F1F1F1),
       ),
-      home: MyHomePage(title: 'Splash Screen Flutter'),
+      theme: NeumorphicThemeData(
+        boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
+        baseColor: Color(0xFFFFFFFF),
+        accentColor: Colors.cyan,
+        lightSource: LightSource.topLeft,
+        depth: 2,
+        intensity: 0.8,
+        defaultTextColor: Color(0x1C1C1C1C),
+      ),
+      home: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: AssetFormPage(),
+      ),
     );
   }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return _introScreen();
-  }
-}
-
-Widget _introScreen() {
-  return Stack(
-    children: <Widget>[
-      SplashScreen(
-        seconds: 2,
-        gradientBackground: LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
-          colors: [Color(0xFFFFFFFF), Color(0xFFE6E6E6)],
-        ),
-        navigateAfterSeconds: HomeScreen(),
-        loaderColor: Colors.blue,
-      ),
-      Center(
-        child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/logo_transparent.png"),
-              fit: BoxFit.scaleDown,
-            ),
-          ),
-        ),
-      ),
-    ],
-  );
 }
